@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<style>
+form {
+    margin: auto;
+    width: 35%;
+}
+body{
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-shadow: 4px 4px 5px rgb(92, 35, 224);
+        background: url('https://i.pinimg.com/originals/5c/f2/66/5cf2660af5f4214def7166dc7a7c8062.jpg');
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}
+</style>
+
+<head>
+    <title>Crop Recommendation Model</title>
+</head>
+<body>
+<form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+        <legend>Input values:</legend>
+        Temperature:
+        <input name="temperature" type="number" step="any" required>
+        <br>
+        <br> Humidity:
+        <input name="humidity" type="number" step="any" required>
+        <br>
+        <br> Ph:
+        <input name="ph" type="number" step="any" required>
+        <br>
+        <br>
+        Rainfall:
+        <input name="rainfall" type="number" step="any" required>
+        <br>
+        <br>
+        N:
+        <input name="n" type="number" required>
+        <br>
+        <br>
+        P:
+        <input name="p" type="number"  required>
+        <br>
+        <br>
+        K:
+        <input name="k" type="number" required>
+        <br>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %}
+    	{% for variable, value in original_input.items() %}
+    		<b>{{ variable }}</b> : {{ value }}
+    	{% endfor %}
+		<br>
+    	<br> Recommended Crop:
+   		<p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+</body>>
+</html>
